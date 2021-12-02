@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:54:11 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/02 18:16:51 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/02 19:09:37 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	ft_countword(char const *s, char c)
 	count = 0;
 	while (s[i])
 	{
-		if (i == 0 && s[i] != c)
+		if (!i && s[i] != c)
 			count++;
 		if (s[i] != c && (i > 0) && s[i - 1] == c)
 			count++;
@@ -87,12 +87,12 @@ char	**ft_split(char const *s, char c)
 	if (s == 0)
 		return ((char **)ft_strdup(""));
 	count = ft_countword(s, c);
-	str = (char **)malloc(sizeof(char *) * count);
+	str = (char **)malloc(sizeof(char *) * (count + 1));
 	if (!str)
 		return (NULL);
 	while (i < count)
 	{
-		str[i] = (char *)malloc(sizeof(char) * ft_lenword(s, c, &len) + 1);
+		str[i] = (char *)malloc(sizeof(char) * (ft_lenword(s, c, &len) + 1));
 		if (str[i] == 0)
 			return (ft_free(str));
 		str[i] = ft_cpyword(str[i], s, c, &l);
