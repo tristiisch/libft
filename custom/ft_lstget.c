@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isblank.c                                       :+:      :+:    :+:   */
+/*   ft_lstget.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 04:14:45 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/02 19:58:13 by tglory           ###   ########lyon.fr   */
+/*   Created: 2021/12/02 19:49:09 by tglory            #+#    #+#             */
+/*   Updated: 2021/12/02 19:58:15 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isblank(char *str)
+void	*ft_lstget(t_list *lst, char *key, char *(*get_key) (void *))
 {
-	int	i;
+	char	*str;
 
-	i = 0;
-	while (str[i])
+	if (lst && get_key)
 	{
-		if (str[i] != ' ' && (str[i] < '\a' || str[i++] > '\r'))
-			return (0);
-		i++;
+		while (lst)
+		{
+			str = (*get_key)(lst->content);
+			if (ft_strncmp(key, str, ft_strlen(str) + 1))
+			{
+				return (lst->content);
+			}
+			lst = lst->next;
+		}
 	}
-	return (1);
+	return (NULL);
 }

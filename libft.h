@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:55:29 by tglory            #+#    #+#             */
-/*   Updated: 2021/11/09 06:41:58 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/02 19:57:27 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ t_list				*ft_lstmap(t_list *lst, void *(*f) (void *), void (del)
 						(void *));
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 void				ft_lstdelone(t_list *lst, void (*del) (void *));
+
 int					ft_isblank(char *str);
+void				*ft_lstget(t_list *lst, char *key, char *(*get_key) (void *));
 
 #endif
