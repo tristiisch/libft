@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:54:11 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/02 17:54:59 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/02 18:16:51 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ static char	**ft_free(char **str)
 
 	i = 0;
 	while (*str[i])
-	{
-		free(str[i]);
-		i++;
-	}
+		free(str[i++]);
 	free(str);
 	return (NULL);
 }
