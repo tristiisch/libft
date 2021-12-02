@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstget.c                                        :+:      :+:    :+:   */
+/*   ft_lstremove.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:49:09 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/02 23:20:03 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/02 23:20:00 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_lstget(t_list *lst, char *key, char *(*get_key) (void *))
+int	ft_lstremove(t_list *lst, char *key, char *(*get_key) (void *), void (*f) (void *))
 {
 	char	*str;
+	t_list	*prev;
 
+	prev = NULL;
 	if (lst && get_key)
 	{
 		while (lst)
@@ -23,10 +25,14 @@ void	*ft_lstget(t_list *lst, char *key, char *(*get_key) (void *))
 			str = (*get_key)(lst->content);
 			if (!ft_strncmp(key, str, ft_strlen(str) + 1))
 			{
-				return (lst->content);
+				if (prev)
+					prev->next = lst->next;
+				f(lst);
+				return (0);
 			}
+			prev = lst;
 			lst = lst->next;
 		}
 	}
-	return (NULL);
+	return (1);
 }
