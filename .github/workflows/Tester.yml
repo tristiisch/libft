@@ -1,4 +1,4 @@
-name: Norme, Compilation & Tester
+name: Unit Test
 
 on:
   push:
@@ -7,44 +7,45 @@ on:
     branches: [ master ]
 
 jobs:
-  norminette_job:
+  warmachine:
     runs-on: ubuntu-latest
-    name: norminette
-    steps:
-    - uses: actions/checkout@v2
-    - uses: alexandregv/norminette-action@v3
-      with:
-        flags: '.'
-  build:
-    runs-on: ubuntu-latest
+    name: Tester Warmachine
     permissions:
       checks: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: Make simple libft
-        run: make
-      - name: Make bonus libft
-        run: make bonus
-      - name: Make full libft
-        run: make full
       - name: Checkout Tester
         uses: srt32/git-actions@v0.0.3
         with:
           args: git submodule update --init
-      # - name: Update Env
-      #   run: sudo apt update && sudo apt upgrade -y
       - name: Install Progs for Tester
         run: sudo apt-get install -y bash diffutils python3 gcc clang build-essential && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
       - name: Tester Init
-        run: cd war-machine && ./grademe.sh -u -m
+        run: cd warmachine && ./grademe.sh -u -m
       - name: Tester Execute
-        run: cd war-machine && bash grademe.sh -u -m
+        run: cd warmachine && bash grademe.sh -u -m
       - name: Tester Deepthought
-        run: cat war-machine/deepthought
+        run: cat warmachine/deepthought
 #      - name: Is Valid ?
 #        run: cat war-machine/deepthought | grep KO
-      - name: Tester 2 Init
-        run: cd libftTester && sudo git pull origin master && sudo make a
+      - name: Clean
+        run: make fclean
+  tripouille:
+    runs-on: ubuntu-latest
+    name: Tester Tripouille
+    permissions:
+      checks: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Checkout Tester
+        uses: srt32/git-actions@v0.0.3
+        with:
+          args: git submodule update --init
+      - name: Tester Init
+        run: cd libftTester && sudo git checkout master && sudo git pull origin master
+      - name: Tester Execute
+        run: cd libftTester sudo make a
       - name: Clean
         run: make fclean

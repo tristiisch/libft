@@ -1,6 +1,6 @@
 [submodule "war-machine"]
-	path = war-machine
+	path = warmachine
 	url = https://github.com/ska42/libft-war-machine.git
 [submodule "libftTester"]
-	path = libftTester
+	path = tripouille
 	url = https://github.com/Tripouille/libftTester.git

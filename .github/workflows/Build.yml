@@ -1,0 +1,27 @@
+name: Build with Make
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    permissions:
+      checks: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Make simple libft
+        run: make
+      - name: Make bonus libft
+        run: make bonus
+      - name: Make full libft
+        run: make full
+      - name: Clean
+        run: make clean
+      - name: Clean Executable
+        run: make fclean
