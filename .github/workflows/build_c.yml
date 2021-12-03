@@ -42,7 +42,7 @@ jobs:
       - name: GradeMe Init
         run: cd war-machine && ./grademe.sh -u -m
       - name: GradeMe
-        run: ./grademe.sh -u -m
+        run: cd war-machine && ./grademe.sh -u -m
       - name: Deepthought
         run: cat war-machine/deepthought
 #      - name: Is Valid ?
