@@ -24,13 +24,11 @@ jobs:
         run: |
           cd warmachine
           ./grademe.sh -u -m
-        continue-on-error: true
       - name: Tester WARMACHINE Execute
         run: |
           cd warmachine
           ./grademe.sh -u -m
         shell: bash
-        continue-on-error: true
       - name: Tester WARMACHINE Deepthought
         run: cat warmachine/deepthought
       - name: Tester TRIPOUILLE Init
@@ -38,14 +36,13 @@ jobs:
           cd tripouille
           sudo git checkout master
           sudo git pull origin master
-        continue-on-error: true
       - name: Tester TRIPOUILLE Execute
         run: |
           cd tripouille 
           sudo make a
       - name: All tests WARMACHINE passed ?
         run: |
-          cat warmachine/deepthought | ! grep KO
+          cat warmachine/deepthought | !grep KO
 
   testers_macos:
     runs-on: macos-latest
@@ -66,6 +63,7 @@ jobs:
           pyenv global 3.7.9
           python3 -m pip install --upgrade pip setuptools
           python3 -m pip install norminette
+        continue-on-error: true
       - name: Tester WARMACHINE Init
         run: |
           cd warmachine
@@ -87,4 +85,4 @@ jobs:
           sudo make a
       - name: All tests WARMACHINE passed ?
         run: |
-          cat warmachine/deepthought | ! grep KO
+          cat warmachine/deepthought | !grep KO
