@@ -37,10 +37,12 @@ jobs:
         uses: srt32/git-actions@v0.0.3
         with:
           args: git submodule update --init
-      - name: Install 
-        run: sudo apt-get install -y diffutils python3 gcc clang && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
+      - name: Install
+        run: sudo apt-get install -y diffutils python3 gcc clang build-essential && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
+      - name: GradeMe Init
+        run: cd war-machine && ./grademe.sh -u -m
       - name: GradeMe
-        run: cd war-machine && ./grademe.sh -u -m ; ./grademe.sh -u -m
+        run: ./grademe.sh -u -m
       - name: Deepthought
         run: cat war-machine/deepthought
 #      - name: Is Valid ?
