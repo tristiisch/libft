@@ -19,4 +19,4 @@ jobs:
         with:
           args: git submodule update --init
       - name: GradeMe
-        run: cd  && bash grademe.sh ; bash grademe.sh
+        run: cd war-machine && bash grademe.sh -u ; bash grademe.sh -u
