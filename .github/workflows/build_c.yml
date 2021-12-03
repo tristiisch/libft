@@ -45,8 +45,6 @@ jobs:
 #      - name: Is Valid ?
 #        run: cat war-machine/deepthought | grep KO
       - name: Tester 2 Init
-        run: cd libftTester && sudo git pull origin master
-      - name: Tester 2 Execute
-        run: cd libftTester && sudo make a
+        run: cd libftTester && sudo git pull origin master && sudo make a
       - name: Clean
         run: make fclean
