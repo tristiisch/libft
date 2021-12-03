@@ -6,7 +6,7 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/26 17:55:35 by tglory            #+#    #+#              #
-#    Updated: 2021/12/03 05:19:14 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/03 20:40:40 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRC			=	ft_isdigit.c \
 				ft_strcat.c \
 				ft_strcpy.c \
 				ft_putchar.c \
+				ft_striteri.c \
 				ft_putstr.c
 
 SRC_BONUS	=	ft_lstdelone.c \
