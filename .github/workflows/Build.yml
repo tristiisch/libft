@@ -7,19 +7,43 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  mandatory:
     runs-on: ubuntu-latest
-    name: Build
+    name: Build Mandatory Part
     permissions:
       checks: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: Make simple libft
+      - name: Make
         run: make
-      - name: Make bonus libft
+      - name: Clean
+        run: make clean
+      - name: Clean Executable
+        run: make fclean
+  bonus:
+    runs-on: ubuntu-latest
+    name: Build Bonus Part
+    permissions:
+      checks: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Make Bonus
         run: make bonus
-      - name: Make full libft
+      - name: Clean
+        run: make clean
+      - name: Clean Executable
+        run: make fclean
+  custom:
+    runs-on: ubuntu-latest
+    name: Build Custom Part
+    permissions:
+      checks: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Make Full
         run: make full
       - name: Clean
         run: make clean
