@@ -47,6 +47,8 @@ jobs:
   testers_macos:
     runs-on: macos-latest
     name: Tester macOS
+    env:
+      TERM: xterm-color
     permissions:
       checks: write
     steps:
@@ -54,9 +56,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Install Progs for Tester
+      - name: Install Homebrew
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        continue-on-error: true
+      - name: Install Progs for Tester
+        run: |
           /usr/local/bin/brew install pyenv
           pyenv init
           pyenv install 3.7.9
