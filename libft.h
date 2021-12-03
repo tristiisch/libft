@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:55:29 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/03 04:36:32 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/03 05:28:29 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+/*--------------------------------{ LIBFT }--------------------------------*/
 
 int					ft_atoi(const char *str);
 int					ft_isalnum(int c);
@@ -66,7 +68,9 @@ char				ft_strcmp(char *s1, char *s2);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 size_t				ft_strlen(const char *s);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
+/*-----------------------------{ BONUS LIST }-----------------------------*/
 t_list				*ft_lstnew(void *content);
 t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, void *(*f) (void *), void (del)
@@ -76,15 +80,19 @@ void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del) (void *));
 void				ft_lstclear(t_list **lst, void (*del) (void *));
 void				ft_lstiter(t_list *lst, void (*f) (void *));
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
+void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 void				ft_lstdelone(t_list *lst, void (*del) (void *));
-int					ft_isblank(char *str);
+
+/*-------------------------------{ CUSTOM }-------------------------------*/
 
 void				*ft_lstget(t_list *lst, char *key,
 						char *(*get_key) (void *));
 int					ft_lstremove(t_list *lst, char *key,
 						char *(*get_key) (void *), void (*f) (void *));
 
+/*--------------------------------{ PERSO }--------------------------------*/
+
 char				**ft_strtrunc(char *str, char c);
+int					ft_isblank(char *str);
 
 #endif

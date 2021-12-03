@@ -6,14 +6,14 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/26 17:55:35 by tglory            #+#    #+#              #
-#    Updated: 2021/12/03 03:06:39 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/03 05:19:14 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 CC 			=	gcc
 NAME		=	libft.a
 CFLAGS		=   -Wall -Wextra -Werror
-INCLUDE		=	libft.h gnl/get_next_line.h
+INCLUDES	=	libft.h
 INCLUDE_DIR	=	-I. -Ignl
 
 SRC			=	ft_isdigit.c \
@@ -81,12 +81,13 @@ SRC_CUSTOM	=	custom/ft_isblank.c \
 
 OBJS 		=	$(SRC:.c=.o)
 OBJS_BONUS	=	$(SRC_BONUS:.c=.o)
-OBJS_GNL	=	$(SRC_GNL:.c=.o)
+OBJS_GNL2	=	$(SRC_GNL:.c=.o)
 OBJS_CUSTOM	=	$(SRC_CUSTOM:.c=.o)
 
-
-%.o		:	%.c $(INCLUDE)
+%.o:%.c $(INCLUDES)
 			$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE_DIR)
+
+all		:	$(NAME)
 
 $(NAME) :	$(OBJS)
 			ar rcs $(NAME) $(OBJS)
@@ -95,8 +96,8 @@ $(NAME) :	$(OBJS)
 bonus	:	$(OBJS) $(OBJS_BONUS)
 			ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 			ranlib $(NAME)
-			
-all		:	$(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM)
+
+full		:	$(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM) gnl/get_next_line.h
 			ar rcs $(NAME) $(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM)
 			ranlib $(NAME)
 
@@ -106,6 +107,8 @@ clean	:
 fclean	: 	clean
 			rm -f $(NAME)
 
-re		: 	fclean all
+re:
+			make fclean
+			make all
 
 .PHONY: all clean bonus fclean re
