@@ -2,8 +2,8 @@ name: MacOS Unit Test
 
 on: [push, pull_request]
 
-env:
-  TERMINFO: /usr/share/terminfo
+# env:
+#   TERMINFO: /usr/share/terminfo
 
 jobs:
   warmachine_macos:
