@@ -17,33 +17,26 @@ jobs:
         flags: '.'
   build:
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
     steps:
-      - name: checkout repo
+      - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: build simple libft
+      - name: Make simple libft
         run: make
-      - name: build bonus libft
+      - name: Make bonus libft
         run: make bonus
-      - name: build full libft
+      - name: Make full libft
         run: make full
-      - name: clean
-        run: make fclean
-  warmachine:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Checkout submodules
-        uses: srt32/git-actions@v0.0.3
-        with:
-          args: git submodule update --init
-      - name: Install
+      - name: Install Progs for Tester
         run: sudo apt-get install -y bash diffutils python3 gcc clang build-essential && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
-      - name: GradeMe Init
+      - name: Tester Init
         run: cd war-machine && ./grademe.sh -u -m
-      - name: GradeMe
+      - name: Tester Execute
         run: cd war-machine && bash grademe.sh -u -m
-      - name: Deepthought
+      - name: Tester Deepthought
         run: cat war-machine/deepthought
 #      - name: Is Valid ?
 #        run: cat war-machine/deepthought | grep KO
+      - name: Clean
+        run: make fclean
