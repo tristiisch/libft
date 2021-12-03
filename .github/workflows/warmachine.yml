@@ -18,10 +18,12 @@ jobs:
         uses: srt32/git-actions@v0.0.3
         with:
           args: git submodule update --init
+      - name: File Diff
+        uses: tianhaoz95-actions/file-diff@v1.0.0
       - name: GradeMe
         run: cd war-machine && ./grademe.sh -u -m ; ./grademe.sh -u -m
       - name: Deepthought
         run: cat war-machine/deepthought
-      - name: Is Valid ?
-        run: cat war-machine/deepthought | grep OK
+#      - name: Is Valid ?
+#        run: cat war-machine/deepthought | grep KO
 
