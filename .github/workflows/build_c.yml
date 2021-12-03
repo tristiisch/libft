@@ -38,11 +38,11 @@ jobs:
         with:
           args: git submodule update --init
       - name: Install
-        run: sudo apt-get install -y diffutils python3 gcc clang build-essential && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
+        run: sudo apt-get install -y bash diffutils python3 gcc clang build-essential && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
       - name: GradeMe Init
         run: cd war-machine && ./grademe.sh -u -m
       - name: GradeMe
-        run: cd war-machine && ./grademe.sh -u -m
+        run: cd war-machine && bash grademe.sh -u -m
       - name: Deepthought
         run: cat war-machine/deepthought
 #      - name: Is Valid ?
