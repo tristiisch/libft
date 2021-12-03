@@ -1,14 +1,14 @@
-name: Unit Test
+name: Unit Test MacOS
 
 on: [push, pull_request]
 
 env:
-  TERM: linux
+  TERMINFO: /usr/share/terminfo
 
 jobs:
-  warmachine:
-    runs-on: ubuntu-latest
-    name: Tester Warmachine
+  warmachine_macos:
+    runs-on: macos-latest
+    name: Tester Warmachine macOS
     permissions:
       checks: write
     steps:
@@ -18,8 +18,6 @@ jobs:
         uses: srt32/git-actions@v0.0.3
         with:
           args: git submodule update --init
-      - name: Install Progs for Tester
-        run: sudo apt-get install -y bash diffutils python3 gcc clang build-essential && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
       - name: Tester Init
         run: cd warmachine && ./grademe.sh -u -m
       - name: Tester Execute
@@ -28,8 +26,8 @@ jobs:
         run: cat warmachine/deepthought
 #      - name: Is Valid ?
 #        run: cat war-machine/deepthought | grep KO
-  tripouille:
-    runs-on: ubuntu-latest
+  tripouille_macos:
+    runs-on: macos-latest
     name: Tester Tripouille
     permissions:
       checks: write
