@@ -19,7 +19,7 @@ jobs:
         with:
           args: git submodule update --init
       - name: GradeMe
-        run: cd war-machine && bash grademe.sh -u ; bash grademe.sh -u
+        run: cd war-machine && ./grademe.sh -u -m ; ./grademe.sh -u -m
       - name: Deepthought
         run: cat war-machine/deepthought
       - name: Is Valid ?
