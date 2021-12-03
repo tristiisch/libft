@@ -32,10 +32,9 @@ jobs:
         shell: bash
         continue-on-error: true
       - name: Tester WARMACHINE Deepthought
-        run: cat warmachine/deepthought
-        continue-on-error: true
-      - name: Is Valid ?
-        run: cat warmachine/deepthought | grep -v KO
+        run: |
+          cat warmachine/deepthought
+          cat warmachine/deepthought | ! grep KO
         continue-on-error: true
       - name: Tester TRIPOUILLE Init
         run: |
@@ -61,7 +60,11 @@ jobs:
           submodules: true
       - name: Install Progs for Tester
         run: |
-          sudo apt-get install -y bash diffutils python3 gcc clang build-essential valgrind
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install pyenv
+          pyenv init
+          pyenv install 3.7.9
+          pyenv global 3.7.9
           python3 -m pip install --upgrade pip setuptools
           python3 -m pip install norminette
       - name: Tester WARMACHINE Init
@@ -75,10 +78,9 @@ jobs:
           ./grademe.sh -u -m
         continue-on-error: true
       - name: Tester WARMACHINE Deepthought
-        run: cat warmachine/deepthought
-        continue-on-error: true
-      - name: Is Valid ?
-        run: cat warmachine/deepthought | grep -v KO
+        run: |
+          cat warmachine/deepthought
+          cat warmachine/deepthought | ! grep KO
         continue-on-error: true
       - name: Tester TRIPOUILLE Init
         run: |
