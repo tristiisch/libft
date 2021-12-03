@@ -6,7 +6,7 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/26 17:55:35 by tglory            #+#    #+#              #
-#    Updated: 2021/12/03 02:51:01 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/03 03:06:39 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,10 @@ SRC			=	ft_isdigit.c \
 				ft_strncmp.c \
 				ft_strcat.c \
 				ft_strcpy.c \
-				ft_lstdelone.c \
+				ft_putchar.c \
+				ft_putstr.c
+
+SRC_BONUS	=	ft_lstdelone.c \
 				ft_lstclear.c \
 				ft_lstadd_front.c \
 				ft_lstadd_back.c \
@@ -66,34 +69,43 @@ SRC			=	ft_isdigit.c \
 				ft_lstsize.c \
 				ft_lstlast.c \
 				ft_lstiter.c \
-				ft_lstdelone.c \
-				ft_putchar.c \
-				ft_putstr.c \
-				gnl/get_next_line.c \
-				gnl/get_next_line_utils.c \
-				custom/ft_isblank.c \
+				ft_lstdelone.c
+
+SRC_GNL		=	gnl/get_next_line.c \
+				gnl/get_next_line_utils.c
+
+SRC_CUSTOM	=	custom/ft_isblank.c \
 				custom/ft_lstget.c \
 				custom/ft_strtrunc.c \
 				custom/ft_lstremove.c
 
 OBJS 		=	$(SRC:.c=.o)
+OBJS_BONUS	=	$(SRC_BONUS:.c=.o)
+OBJS_GNL	=	$(SRC_GNL:.c=.o)
+OBJS_CUSTOM	=	$(SRC_CUSTOM:.c=.o)
 
-
-$(NAME) :	$(OBJS) 
-			ar rcs $(NAME) $(OBJS)
-			ranlib $(NAME)
 
 %.o		:	%.c $(INCLUDE)
 			$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE_DIR)
 
-all		:	$(NAME)
+$(NAME) :	$(OBJS)
+			ar rcs $(NAME) $(OBJS)
+			ranlib $(NAME)
+
+bonus	:	$(OBJS) $(OBJS_BONUS)
+			ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+			ranlib $(NAME)
+			
+all		:	$(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM)
+			ar rcs $(NAME) $(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM)
+			ranlib $(NAME)
 
 clean	:
-			rm -f $(OBJS)
+			rm -f $(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM)
 
 fclean	: 	clean
 			rm -f $(NAME)
 
 re		: 	fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean bonus fclean re

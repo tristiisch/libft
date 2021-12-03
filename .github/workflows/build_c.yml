@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Build libft.a
 
 on:
   push:
@@ -14,7 +14,11 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
-      - name: build application
+      - name: build simple libft
+        run: make
+      - name: build bonus libft
+        run: make bonus
+      - name: build full libft
         run: make all
       - name: clean
         run: make fclean
