@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char	**ft_strtrunc_2(char *str, char c, int i, char **out)
+static char	**ft_strtrunc_2(char *str, int i, char **out)
 {
 	int			j;
 
@@ -56,5 +56,5 @@ char	**ft_strtrunc(char *str, char c)
 		free(out);
 		return (NULL);
 	}
-	return (ft_strtrunc_2(str, c, i, out));
+	return (ft_strtrunc_2(str, i, out));
 }
