@@ -45,6 +45,6 @@ jobs:
 #      - name: Is Valid ?
 #        run: cat war-machine/deepthought | grep KO
       - name: Tester 2 Execute
-        run: cd libftTester && make a
+        run: cd libftTester && sudo make a
       - name: Clean
         run: make fclean
