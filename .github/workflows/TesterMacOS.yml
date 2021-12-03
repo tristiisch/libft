@@ -1,4 +1,4 @@
-name: Unit Test MacOS
+name: MacOS Unit Test
 
 on: [push, pull_request]
 
