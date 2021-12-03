@@ -20,3 +20,8 @@ jobs:
           args: git submodule update --init
       - name: GradeMe
         run: cd war-machine && bash grademe.sh -u ; bash grademe.sh -u
+      - name: Deepthought
+        run: cat war-machine/deepthought
+      - name: Is Valid ?
+        run: cat war-machine/deepthought | grep OK
+
