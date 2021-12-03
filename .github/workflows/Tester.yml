@@ -32,10 +32,7 @@ jobs:
         shell: bash
         continue-on-error: true
       - name: Tester WARMACHINE Deepthought
-        run: |
-          cat warmachine/deepthought
-          cat warmachine/deepthought | ! grep KO
-        continue-on-error: true
+        run: cat warmachine/deepthought
       - name: Tester TRIPOUILLE Init
         run: |
           cd tripouille
@@ -46,7 +43,9 @@ jobs:
         run: |
           cd tripouille 
           sudo make a
-  
+      - name: All tests WARMACHINE passed ?
+        run: |
+          cat warmachine/deepthought | ! grep KO
 
   testers_macos:
     runs-on: macos-latest
@@ -61,7 +60,7 @@ jobs:
       - name: Install Progs for Tester
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          brew install pyenv
+          /usr/local/bin/brew install pyenv
           pyenv init
           pyenv install 3.7.9
           pyenv global 3.7.9
@@ -71,24 +70,21 @@ jobs:
         run: |
           cd warmachine
           ./grademe.sh -u -m
-        continue-on-error: true
       - name: Tester WARMACHINE Execute
         run: |
           cd warmachine
           ./grademe.sh -u -m
-        continue-on-error: true
       - name: Tester WARMACHINE Deepthought
-        run: |
-          cat warmachine/deepthought
-          cat warmachine/deepthought | ! grep KO
-        continue-on-error: true
+        run: cat warmachine/deepthought
       - name: Tester TRIPOUILLE Init
         run: |
           cd tripouille
           sudo git checkout master
           sudo git pull origin master
-        continue-on-error: true
       - name: Tester TRIPOUILLE Execute
         run: |
-          cd tripouille 
+          cd tripouille
           sudo make a
+      - name: All tests WARMACHINE passed ?
+        run: |
+          cat warmachine/deepthought | ! grep KO
