@@ -14,28 +14,39 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          # token: ${{ secrets.CI_TOKEN }}
           submodules: true
       - name: Install Progs for Tester
-        run: sudo apt-get install -y bash diffutils python3 gcc clang build-essential && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
+        run: |
+          sudo apt-get install -y bash diffutils python3 gcc clang build-essential valgrind
+          python3 -m pip install --upgrade pip setuptools
+          python3 -m pip install norminette
       - name: Tester WARMACHINE Init
-        run: cd warmachine && ./grademe.sh -u -m
+        run: |
+          cd warmachine
+          ./grademe.sh -u -m
         continue-on-error: true
       - name: Tester WARMACHINE Execute
-        run: cd warmachine && ./grademe.sh -u -m
-        continue-on-error: true
+        run: |
+          cd warmachine
+          ./grademe.sh -u -m
         shell: bash
+        continue-on-error: true
       - name: Tester WARMACHINE Deepthought
         run: cat warmachine/deepthought
         continue-on-error: true
       - name: Is Valid ?
-        run: cat war-machine/deepthought | grep OK
+        run: cat warmachine/deepthought | grep -v KO
         continue-on-error: true
       - name: Tester TRIPOUILLE Init
-        run: cd tripouille && sudo git checkout master && sudo git pull origin master
+        run: |
+          cd tripouille
+          sudo git checkout master
+          sudo git pull origin master
         continue-on-error: true
       - name: Tester TRIPOUILLE Execute
-        run: cd tripouille && sudo make a
+        run: |
+          cd tripouille 
+          sudo make a
   
 
   testers_macos:
@@ -47,21 +58,35 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          # token: ${{ secrets.CI_TOKEN }}
           submodules: true
+      - name: Install Progs for Tester
+        run: |
+          sudo apt-get install -y bash diffutils python3 gcc clang build-essential valgrind
+          python3 -m pip install --upgrade pip setuptools
+          python3 -m pip install norminette
       - name: Tester WARMACHINE Init
-        run: cd warmachine && ./grademe.sh -u -m
+        run: |
+          cd warmachine
+          ./grademe.sh -u -m
         continue-on-error: true
       - name: Tester WARMACHINE Execute
-        run: cd warmachine && ./grademe.sh -u -m
+        run: |
+          cd warmachine
+          ./grademe.sh -u -m
         continue-on-error: true
       - name: Tester WARMACHINE Deepthought
         run: cat warmachine/deepthought
         continue-on-error: true
       - name: Is Valid ?
-        run: cat war-machine/deepthought | grep OK
+        run: cat warmachine/deepthought | grep -v KO
+        continue-on-error: true
       - name: Tester TRIPOUILLE Init
-        run: cd tripouille && sudo git checkout master && sudo git pull origin master
+        run: |
+          cd tripouille
+          sudo git checkout master
+          sudo git pull origin master
         continue-on-error: true
       - name: Tester TRIPOUILLE Execute
-        run: cd tripouille && sudo make a
+        run: |
+          cd tripouille 
+          sudo make a
