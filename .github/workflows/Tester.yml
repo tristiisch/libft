@@ -44,8 +44,8 @@ jobs:
         with:
           args: git submodule update --init
       - name: Tester Init
-        run: cd libftTester && sudo git checkout master && sudo git pull origin master
+        run: cd tripouille && sudo git checkout master && sudo git pull origin master
       - name: Tester Execute
-        run: cd libftTester sudo make a
+        run: cd tripouille && sudo make a
       - name: Clean
         run: make fclean

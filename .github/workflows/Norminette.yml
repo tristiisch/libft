@@ -1,4 +1,4 @@
-name: Norminette & Build
+name: Norminette
 
 on:
   push:
@@ -12,6 +12,9 @@ jobs:
     name: norminette
     steps:
     - uses: actions/checkout@v2
+    - uses: alexandregv/norminette-action@v3
+      with:
+        flags: '-v'
     - uses: alexandregv/norminette-action@v3
       with:
         flags: '.'
