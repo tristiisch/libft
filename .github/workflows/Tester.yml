@@ -2,15 +2,14 @@ name: Unit Test
 
 on: [push, pull_request]
 
-env:
-  TERM: linux
-
 jobs:
-  warmachine:
+  testers_linux:
     runs-on: ubuntu-latest
-    name: Tester Warmachine
+    name: Tester linux
     permissions:
       checks: write
+    env:
+      TERM: linux
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -19,27 +18,50 @@ jobs:
           submodules: true
       - name: Install Progs for Tester
         run: sudo apt-get install -y bash diffutils python3 gcc clang build-essential && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
-      - name: Tester Init
+      - name: Tester WARMACHINE Init
         run: cd warmachine && ./grademe.sh -u -m
-      - name: Tester Execute
-        run: cd warmachine && bash grademe.sh -u -m
-      - name: Tester Deepthought
+        continue-on-error: true
+      - name: Tester WARMACHINE Execute
+        run: cd warmachine && ./grademe.sh -u -m
+        continue-on-error: true
+        shell: bash
+      - name: Tester WARMACHINE Deepthought
         run: cat warmachine/deepthought
-#      - name: Is Valid ?
-#        run: cat war-machine/deepthought | grep KO
-  tripouille:
-    runs-on: ubuntu-latest
-    name: Tester Tripouille
+        continue-on-error: true
+      - name: Is Valid ?
+        run: cat war-machine/deepthought | grep OK
+        continue-on-error: true
+      - name: Tester TRIPOUILLE Init
+        run: cd tripouille && sudo git checkout master && sudo git pull origin master
+        continue-on-error: true
+      - name: Tester TRIPOUILLE Execute
+        run: cd tripouille && sudo make a
+  
+
+  testers_macos:
+    runs-on: macos-latest
+    name: Tester macOS
     permissions:
       checks: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: Checkout Tester
-        uses: srt32/git-actions@v0.0.3
         with:
-          args: git submodule update --init
-      - name: Tester Init
+          # token: ${{ secrets.CI_TOKEN }}
+          submodules: true
+      - name: Tester WARMACHINE Init
+        run: cd warmachine && ./grademe.sh -u -m
+        continue-on-error: true
+      - name: Tester WARMACHINE Execute
+        run: cd warmachine && ./grademe.sh -u -m
+        continue-on-error: true
+      - name: Tester WARMACHINE Deepthought
+        run: cat warmachine/deepthought
+        continue-on-error: true
+      - name: Is Valid ?
+        run: cat war-machine/deepthought | grep OK
+      - name: Tester TRIPOUILLE Init
         run: cd tripouille && sudo git checkout master && sudo git pull origin master
-      - name: Tester Execute
+        continue-on-error: true
+      - name: Tester TRIPOUILLE Execute
         run: cd tripouille && sudo make a
