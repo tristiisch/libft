@@ -25,7 +25,7 @@ jobs:
       - name: build bonus libft
         run: make bonus
       - name: build full libft
-        run: make all
+        run: make full
       - name: clean
         run: make fclean
   warmachine:
@@ -37,6 +37,8 @@ jobs:
         uses: srt32/git-actions@v0.0.3
         with:
           args: git submodule update --init
+      - name: Install 
+        run: sudo apt-get install -y diff python3 && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
       - name: GradeMe
         run: cd war-machine && ./grademe.sh -u -m ; ./grademe.sh -u -m
       - name: Deepthought
