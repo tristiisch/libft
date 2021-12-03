@@ -17,4 +17,15 @@ jobs:
         flags: '-v'
     - uses: alexandregv/norminette-action@v3
       with:
-        flags: '.'
+        flags: '*.c'
+  norminette_custom:
+    runs-on: ubuntu-latest
+    name: norminette
+    steps:
+    - uses: actions/checkout@v2
+    - uses: alexandregv/norminette-action@v3
+      with:
+        flags: '-v'
+    - uses: alexandregv/norminette-action@v3
+      with:
+        flags: 'custom gnl'

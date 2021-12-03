@@ -29,8 +29,26 @@ jobs:
         run: cat warmachine/deepthought
 #      - name: Is Valid ?
 #        run: cat war-machine/deepthought | grep KO
-      - name: Clean
-        run: make fclean
+  warmachine_macos:
+    runs-on: ubuntu-latest
+    name: Tester Warmachine macOS
+    permissions:
+      checks: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Checkout Tester
+        uses: srt32/git-actions@v0.0.3
+        with:
+          args: git submodule update --init
+      - name: Tester Init
+        run: cd warmachine && ./grademe.sh -u -m
+      - name: Tester Execute
+        run: cd warmachine && bash grademe.sh -u -m
+      - name: Tester Deepthought
+        run: cat warmachine/deepthought
+#      - name: Is Valid ?
+#        run: cat war-machine/deepthought | grep KO
   tripouille:
     runs-on: ubuntu-latest
     name: Tester Tripouille
@@ -47,5 +65,3 @@ jobs:
         run: cd tripouille && sudo git checkout master && sudo git pull origin master
       - name: Tester Execute
         run: cd tripouille && sudo make a
-      - name: Clean
-        run: make fclean
