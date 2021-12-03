@@ -14,10 +14,9 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: Checkout Tester
-        uses: srt32/git-actions@v0.0.3
         with:
-          args: git submodule update --init
+          # token: ${{ secrets.CI_TOKEN }}
+          submodules: true
       - name: Tester Init
         run: cd warmachine && ./grademe.sh -u -m
       - name: Tester Execute
@@ -35,9 +34,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Checkout Tester
-        uses: srt32/git-actions@v0.0.3
         with:
-          args: git submodule update --init
+          # token: ${{ secrets.CI_TOKEN }}
+          submodules: true
       - name: Tester Init
         run: cd tripouille && sudo git checkout master && sudo git pull origin master
       - name: Tester Execute

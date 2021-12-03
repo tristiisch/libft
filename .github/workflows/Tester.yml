@@ -14,10 +14,9 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: Checkout Tester
-        uses: srt32/git-actions@v0.0.3
         with:
-          args: git submodule update --init
+          # token: ${{ secrets.CI_TOKEN }}
+          submodules: true
       - name: Install Progs for Tester
         run: sudo apt-get install -y bash diffutils python3 gcc clang build-essential && python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
       - name: Tester Init
