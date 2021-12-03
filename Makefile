@@ -6,7 +6,7 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/26 17:55:35 by tglory            #+#    #+#              #
-#    Updated: 2021/12/02 21:10:21 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/03 02:51:01 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ SRC			=	ft_isdigit.c \
 				gnl/get_next_line_utils.c \
 				custom/ft_isblank.c \
 				custom/ft_lstget.c \
+				custom/ft_strtrunc.c \
 				custom/ft_lstremove.c
 
 OBJS 		=	$(SRC:.c=.o)
