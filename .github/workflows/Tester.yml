@@ -56,13 +56,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Install Homebrew
+      - name: Install Homebrew & pyenv
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          /usr/local/bin/brew install pyenv
         continue-on-error: true
       - name: Install Progs for Tester
         run: |
-          /usr/local/bin/brew install pyenv
           pyenv init
           pyenv install 3.7.9
           pyenv global 3.7.9
