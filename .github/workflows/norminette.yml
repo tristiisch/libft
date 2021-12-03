@@ -1,3 +1,5 @@
+name: Check norminette
+
 on: [push, pull_request]
 
 jobs:
