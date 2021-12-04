@@ -77,6 +77,7 @@ jobs:
         run: |
           cd warmachine
           ./grademe.sh -u -m
+        shell: bash
       - name: Tester WARMACHINE Deepthought
         run: cat warmachine/deepthought
       # - name: Tester TRIPOUILLE Init
