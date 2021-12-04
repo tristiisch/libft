@@ -79,11 +79,11 @@ jobs:
           ./grademe.sh -u -m
       - name: Tester WARMACHINE Deepthought
         run: cat warmachine/deepthought
-      - name: Tester TRIPOUILLE Init
-        run: |
-          cd tripouille
-          git checkout master
-          git pull origin master
+      # - name: Tester TRIPOUILLE Init
+      #   run: |
+      #     cd tripouille
+      #     git checkout master
+      #     git pull origin master
       - name: Tester TRIPOUILLE Execute
         run: |
           cd tripouille
