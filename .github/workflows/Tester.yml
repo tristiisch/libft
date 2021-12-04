@@ -23,11 +23,11 @@ jobs:
       - name: Tester WARMACHINE Init
         run: |
           cd warmachine
-          ./grademe.sh -u -m
+          bash grademe.sh -u -m
       - name: Tester WARMACHINE Execute
         run: |
           cd warmachine
-          ./grademe.sh -u -m
+          bash grademe.sh -u -m
         shell: bash
       - name: Tester WARMACHINE Deepthought
         run: cat warmachine/deepthought

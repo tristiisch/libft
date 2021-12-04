@@ -6,13 +6,13 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 22:04:04 by tglory            #+#    #+#              #
-#    Updated: 2021/12/04 22:31:38 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/04 23:07:04 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
 NAME			=	libft.a
-OBJS_DIR		=	objs
+# OBJS_DIR		=	objs
 CFLAGS			=	-Wall -Wextra -Werror
 INCLUDES		=	libft.h gnl/get_next_line.h custom/custom.h
 INCLUDES_FOLDER	=	-I. -Ignl -Icustom
@@ -80,15 +80,21 @@ SRCS_CUSTOM		=	custom/ft_isblank.c \
 					custom/ft_strtrunc.c \
 					custom/ft_lstremove.c
 
-OBJS			=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
-OBJS_BONUS		=	$(SRCS_BONUS:%.c=$(OBJS_DIR)/%.o)
-OBJS_GNL		=	$(SRCS_GNL:%.c=$(OBJS_DIR)/%.o)
-OBJS_CUSTOM		=	$(SRCS_CUSTOM:%.c=$(OBJS_DIR)/%.o)
+OBJS			=	$(SRCS:%.c=%.o)
+OBJS_BONUS		=	$(SRCS_BONUS:%.c=%.o)
+OBJS_GNL		=	$(SRCS_GNL:%.c=%.o)
+OBJS_CUSTOM		=	$(SRCS_CUSTOM:%.c=%.o)
+# OBJS			=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
+# OBJS_BONUS		=	$(SRCS_BONUS:%.c=$(OBJS_DIR)/%.o)
+# OBJS_GNL		=	$(SRCS_GNL:%.c=$(OBJS_DIR)/%.o)
+# OBJS_CUSTOM		=	$(SRCS_CUSTOM:%.c=$(OBJS_DIR)/%.o)
 
 all : $(NAME)
 
-$(OBJS_DIR)/%.o:%.c $(INCLUDES)
-	mkdir -p $(dir $@) && $(CC) -c $(INCLUDES_FOLDER) $(CFLAGS) -o $@ $<
+%.o:%.c $(INCLUDES)
+	$(CC) -c $(INCLUDES_FOLDER) $(CFLAGS) -o $@ $<
+# $(OBJS_DIR)/%.o:%.c $(INCLUDES)
+#	mkdir -p $(dir $@) && $(CC) -c $(INCLUDES_FOLDER) $(CFLAGS) -o $@ $<
 
 $(NAME) : $(OBJS)
 	ar rcs $(NAME) $(OBJS)
@@ -104,7 +110,7 @@ full : $(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM)
 
 clean:
 	rm -f $(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM)
-	rm -rf $(OBJS_DIR)
+#	rm -rf $(OBJS_DIR)
 
 fclean: clean
 	rm -f $(NAME)
