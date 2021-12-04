@@ -6,19 +6,17 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 22:04:04 by tglory            #+#    #+#              #
-#    Updated: 2021/12/04 22:10:06 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/04 22:22:16 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
 NAME			=	libft.a
 OBJS_DIR		=	objs
-SRCS_DIR		=	srcs
 CFLAGS			=	-Wall -Wextra -Werror
-INCLUDES		=	$(wildcard includes)
-INCLUDES_FOLDER	=	-Iincludes
-# SRCS			=	$(shell find $(SRCS_DIR) -name "*.c")
-SRCS			=	$(addprefix $(SRCS_DIR)/, ft_isdigit.c \
+INCLUDES		=	libft.h gnl/get_next_line.h custom/custom.h
+INCLUDES_FOLDER	=	-I. -Ignl -Icustom
+SRCS			=	ft_isdigit.c \
 					ft_memset.c	\
 					ft_strlcat.c \
 					ft_substr.c \
@@ -61,9 +59,9 @@ SRCS			=	$(addprefix $(SRCS_DIR)/, ft_isdigit.c \
 					ft_strcpy.c \
 					ft_putchar.c \
 					ft_striteri.c \
-					ft_putstr.c )
+					ft_putstr.c
 
-SRCS_BONUS		=	$(addprefix $(SRCS_DIR)/, ft_lstdelone.c \
+SRCS_BONUS		=	ft_lstdelone.c \
 					ft_lstclear.c \
 					ft_lstadd_front.c \
 					ft_lstadd_back.c \
@@ -72,24 +70,24 @@ SRCS_BONUS		=	$(addprefix $(SRCS_DIR)/, ft_lstdelone.c \
 					ft_lstsize.c \
 					ft_lstlast.c \
 					ft_lstiter.c \
-					ft_lstdelone.c )
+					ft_lstdelone.c
 
-SRCS_GNL		=	$(addprefix $(SRCS_DIR)/, gnl/get_next_line.c \
-					gnl/get_next_line_utils.c )
+SRCS_GNL		=	gnl/get_next_line.c \
+					gnl/get_next_line_utils.c
 
-SRCS_CUSTOM		=	$(addprefix $(SRCS_DIR)/, custom/ft_isblank.c \
+SRCS_CUSTOM		=	custom/ft_isblank.c \
 					custom/ft_lstget.c \
 					custom/ft_strtrunc.c \
-					custom/ft_lstremove.c )
+					custom/ft_lstremove.c
 
-OBJS			=	$(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
-OBJS_BONUS		=	$(SRCS_BONUS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
-OBJS_GNL		=	$(SRCS_GNL:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
-OBJS_CUSTOM		=	$(SRCS_CUSTOM:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
+OBJS			=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
+OBJS_BONUS		=	$(SRCS_BONUS:%.c=$(OBJS_DIR)/%.o)
+OBJS_GNL		=	$(SRCS_GNL:%.c=$(OBJS_DIR)/%.o)
+OBJS_CUSTOM		=	$(SRCS_CUSTOM:%.c=$(OBJS_DIR)/%.o)
 
 all : $(NAME)
 
-$(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c $(INCLUDES)
+$(OBJS_DIR)/%.o:%.c $(INCLUDES)
 	mkdir -p $(dir $@) && $(CC) -c $(INCLUDES_FOLDER) $(CFLAGS) -o $@ $<
 
 $(NAME) : $(OBJS)
