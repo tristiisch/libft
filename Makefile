@@ -6,7 +6,7 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 22:04:04 by tglory            #+#    #+#              #
-#    Updated: 2021/12/04 22:22:16 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/04 22:31:38 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,7 @@ full : $(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM)
 	ranlib $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_BONUS) $(OBJS_GNL) $(OBJS_CUSTOM)
 	rm -rf $(OBJS_DIR)
 
 fclean: clean
