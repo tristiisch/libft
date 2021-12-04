@@ -6,11 +6,11 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 04:14:45 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/02 19:58:13 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 22:08:06 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "custom.h"
 
 int	ft_isblank(char *str)
 {

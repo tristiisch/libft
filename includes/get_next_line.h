@@ -6,16 +6,16 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 12:15:16 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/03 05:01:47 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 22:07:56 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# include "libft.h"
 # include <unistd.h>
 # include <stdlib.h>
-# include "libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 128

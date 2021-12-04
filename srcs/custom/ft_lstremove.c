@@ -6,11 +6,11 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:49:09 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/03 02:51:18 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 22:08:10 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "custom.h"
 
 int	ft_lstremove(t_list *lst, char *key,
 	char *(*get_key) (void *), void (*f) (void *))

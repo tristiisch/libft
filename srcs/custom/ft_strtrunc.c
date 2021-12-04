@@ -6,11 +6,11 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 01:30:38 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/03 02:44:37 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 22:08:12 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "custom.h"
 
 static char	**ft_strtrunc_2(char *str, int i, char **out)
 {

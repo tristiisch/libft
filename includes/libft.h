@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:55:29 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/03 05:28:29 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 22:07:51 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_list
 }					t_list;
 
 /*--------------------------------{ LIBFT }--------------------------------*/
-
 int					ft_atoi(const char *str);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
@@ -84,14 +83,12 @@ void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 void				ft_lstdelone(t_list *lst, void (*del) (void *));
 
 /*-------------------------------{ CUSTOM }-------------------------------*/
-
 void				*ft_lstget(t_list *lst, char *key,
 						char *(*get_key) (void *));
 int					ft_lstremove(t_list *lst, char *key,
 						char *(*get_key) (void *), void (*f) (void *));
 
 /*--------------------------------{ PERSO }--------------------------------*/
-
 char				**ft_strtrunc(char *str, char c);
 int					ft_isblank(char *str);
 
