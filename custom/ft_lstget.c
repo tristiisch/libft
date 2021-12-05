@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:49:09 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/04 22:08:09 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/05 03:47:05 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_lstget(t_list *lst, char *key, char *(*get_key) (void *))
 		while (lst)
 		{
 			str = (*get_key)(lst->content);
-			if (!ft_strncmp(key, str, ft_strlen(str) + 1))
+			if (ft_isequals_ignore(key, str))
 			{
 				return (lst->content);
 			}
