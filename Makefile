@@ -6,7 +6,7 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 22:04:04 by tglory            #+#    #+#              #
-#    Updated: 2021/12/04 23:07:04 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/05 03:43:20 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,10 +75,11 @@ SRCS_BONUS		=	ft_lstdelone.c \
 SRCS_GNL		=	gnl/get_next_line.c \
 					gnl/get_next_line_utils.c
 
-SRCS_CUSTOM		=	custom/ft_isblank.c \
-					custom/ft_lstget.c \
-					custom/ft_strtrunc.c \
-					custom/ft_lstremove.c
+# SRCS_CUSTOM		=	custom/ft_isblank.c \
+# 					custom/ft_lstget.c \
+# 					custom/ft_strtrunc.c \
+# 					custom/ft_lstremove.c
+SRCS_CUSTOM		=	$(wildcard custom/*.c)
 
 OBJS			=	$(SRCS:%.c=%.o)
 OBJS_BONUS		=	$(SRCS_BONUS:%.c=%.o)
