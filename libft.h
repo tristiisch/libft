@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:55:29 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/04 22:07:51 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/05 07:12:27 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ int					ft_lstremove(t_list *lst, char *key,
 /*--------------------------------{ PERSO }--------------------------------*/
 char				**ft_strtrunc(char *str, char c);
 int					ft_isblank(char *str);
+char				*ft_strjoin_plus(char const *s1, char const *s2,
+						char const *s3);
 
 #endif
