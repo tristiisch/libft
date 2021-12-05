@@ -6,11 +6,11 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 03:24:39 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/05 03:25:43 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/05 03:28:52 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isupper(char c)
+int	ft_islower(char c)
 {
 	return (c >= 'a' && c <= 'z');
 }
