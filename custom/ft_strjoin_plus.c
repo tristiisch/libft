@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:54:28 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/05 07:31:55 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/05 08:04:41 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strjoin_plus(char const *s1, char const *s2, char const *s3)
 		str[i] = s1[i];
 	while (s2[++j])
 		str[i + j] = s2[j];
-	i = i + j - 1;
+	i = i + j;
 	j = -1;
 	while (s3[++j])
 		str[i + j] = s3[j];
