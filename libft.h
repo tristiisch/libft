@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:55:29 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/05 07:12:27 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/06 02:02:44 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void				ft_lstdelone(t_list *lst, void (*del) (void *));
 void				ft_lstclear(t_list **lst, void (*del) (void *));
 void				ft_lstiter(t_list *lst, void (*f) (void *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
-void				ft_lstdelone(t_list *lst, void (*del) (void *));
 
 /*-------------------------------{ CUSTOM }-------------------------------*/
 void				*ft_lstget(t_list *lst, char *key,
