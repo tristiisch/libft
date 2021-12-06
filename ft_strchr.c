@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:54:15 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/03 05:25:15 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/06 01:10:58 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*str;
-
-	str = (char *)s;
-	while (*str != c)
+	while (*s)
 	{
-		if (!*str)
-		{
-			return (NULL);
-		}
-		str++;
+		if ((unsigned char)*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
 	}
-	return (str);
+	if (c == 0)
+		return ((char *)s);
+	return (NULL);
 }
