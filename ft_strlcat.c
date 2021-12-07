@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:54:31 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/06 01:26:59 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/07 09:03:05 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	dst_len = ft_strlen(dst);
 	if (dst_len > size)
-			dst_len = size;
+		dst_len = size;
 	src_len = ft_strlen(src);
 	if (dst_len < size)
 	{
