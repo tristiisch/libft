@@ -6,7 +6,7 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 22:04:04 by tglory            #+#    #+#              #
-#    Updated: 2021/12/07 03:50:16 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/07 04:54:10 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCS			=	ft_isdigit.c \
 					ft_putchar.c \
 					ft_isupper.c \
 					ft_islower.c \
+					ft_striteri.c \
 					ft_putstr.c
 
 SRCS_BONUS		=	ft_lstdelone.c \
