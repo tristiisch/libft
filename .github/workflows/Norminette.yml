@@ -5,23 +5,29 @@ on: [push, pull_request]
 jobs:
   norminette_job:
     runs-on: ubuntu-latest
-    name: norminette
+    name: Norminette Mandatory & Bonus
     steps:
-    - uses: actions/checkout@v2
-    - uses: alexandregv/norminette-action@v3
+    - name: Pull Repo
+      uses: actions/checkout@v2
+    - name: Norminette Version
+      uses: alexandregv/norminette-action@v3
       with:
         flags: '-v'
-    - uses: alexandregv/norminette-action@v3
+    - name: Norminette Mandatory & Bonus
+      uses: alexandregv/norminette-action@v3
       with:
         flags: '*.c'
   norminette_custom:
     runs-on: ubuntu-latest
-    name: norminette
+    name: Norminette Custom Code
     steps:
-    - uses: actions/checkout@v2
-    - uses: alexandregv/norminette-action@v3
+    - name: Pull Repo
+      uses: actions/checkout@v2
+    - name: Norminette Version
+      uses: alexandregv/norminette-action@v3
       with:
         flags: '-v'
-    - uses: alexandregv/norminette-action@v3
+    - name: Norminette Custom Code
+      uses: alexandregv/norminette-action@v3
       with:
         flags: 'custom gnl'

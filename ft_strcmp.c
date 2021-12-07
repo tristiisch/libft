@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:54:20 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/02 17:52:05 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/07 04:42:54 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,10 @@
 
 char	ft_strcmp(char *s1, char *s2)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while (s2[i])
-	{
-		if (*s1 == s2[i])
-		{
-			return (s2[i]);
-		}
+	while (s1[i] == s2[i] && s1[i] && s2[i])
 		i++;
-	}
-	return (0);
+	return (s1[i] - s2[i]);
 }

@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strichr.c                                       :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/08 19:57:23 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/02 17:52:05 by tglory           ###   ########lyon.fr   */
+/*   Created: 2021/12/05 03:24:39 by tglory            #+#    #+#             */
+/*   Updated: 2021/12/07 03:20:15 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strichr(const char *s, int c)
+int	ft_isupper(char c)
 {
-	size_t	i;
-
-	i = 0;
-	if ((*(s + i) == (char)c) && i == 0)
-		return (-42);
-	while (*(s + i))
-	{
-		if (*(s + i) == (char)c)
-			return (i);
-		i++;
-	}
-	return (0);
+	return (c >= 'A' && c <= 'Z');
 }

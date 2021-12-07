@@ -6,7 +6,7 @@
 #    By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 22:04:04 by tglory            #+#    #+#              #
-#    Updated: 2021/12/05 03:43:20 by tglory           ###   ########lyon.fr    #
+#    Updated: 2021/12/07 03:50:16 by tglory           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRCS			=	ft_isdigit.c \
 					ft_putstr_fd.c \
 					ft_strmapi.c \
 					ft_calloc.c \
-					ft_realloc.c \
 					ft_memchr.c \
 					ft_split.c \
 					ft_strncmp.c \
@@ -53,12 +52,12 @@ SRCS			=	ft_isdigit.c \
 					ft_putnbr_fd.c \
 					ft_strmapi.c \
 					ft_strcmp.c \
-					ft_strichr.c \
 					ft_strncmp.c \
 					ft_strcat.c \
 					ft_strcpy.c \
 					ft_putchar.c \
-					ft_striteri.c \
+					ft_isupper.c \
+					ft_islower.c \
 					ft_putstr.c
 
 SRCS_BONUS		=	ft_lstdelone.c \
