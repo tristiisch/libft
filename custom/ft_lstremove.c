@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:49:09 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/04 22:08:10 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/16 16:20:01 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_lstremove(t_list *lst, char *key,
 			{
 				if (prev)
 					prev->next = lst->next;
-				f(lst);
+				ft_lstdelone(lst, f);
 				return (0);
 			}
 			prev = lst;
