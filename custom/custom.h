@@ -6,7 +6,7 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 22:07:01 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/07 05:50:53 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/20 07:33:21 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	*ft_realloc(void *ptr, size_t new_size, size_t old_size);
 
 /*-------------------------------{ CUSTOM }-------------------------------*/
 void	*ft_lstget(t_list *lst, char *key,
+			char *(*get_key) (void *));
+void	*ft_lstget_ignore(t_list *lst, char *key,
 			char *(*get_key) (void *));
 int		ft_lstremove(t_list *lst, char *key,
 			char *(*get_key) (void *), void (*f) (void *));
