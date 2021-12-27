@@ -6,34 +6,33 @@
 /*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:49:09 by tglory            #+#    #+#             */
-/*   Updated: 2021/12/16 16:20:01 by tglory           ###   ########lyon.fr   */
+/*   Updated: 2021/12/27 20:47:37 by tglory           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "custom.h"
 
-int	ft_lstremove(t_list *lst, char *key,
+static t_list	*remove(t_list *lst, char *key,
 	char *(*get_key) (void *), void (*f) (void *))
 {
+	t_list	*temp;
 	char	*str;
-	t_list	*prev;
 
-	prev = NULL;
-	if (lst && get_key)
+	if (!lst)
+		return (NULL);
+	str = (*get_key)(lst->content);
+	if (!ft_strncmp(key, str, ft_strlen(str) + 1))
 	{
-		while (lst)
-		{
-			str = (*get_key)(lst->content);
-			if (!ft_strncmp(key, str, ft_strlen(str) + 1))
-			{
-				if (prev)
-					prev->next = lst->next;
-				ft_lstdelone(lst, f);
-				return (0);
-			}
-			prev = lst;
-			lst = lst->next;
-		}
+		temp = lst->next;
+		ft_lstdelone(lst, f);
+		return (temp);
 	}
-	return (1);
+	lst->next = remove(lst->next, key, get_key, f);
+	return (lst);
+}
+
+void	ft_lstremove(t_list **lst, char *key,
+	char *(*get_key) (void *), void (*f) (void *))
+{
+	*lst = remove(*lst, key, get_key, f);
 }

@@ -86,11 +86,29 @@ jobs:
       #     cd tripouille
       #     git checkout master
       #     git pull origin master
-      - name: Tester TRIPOUILLE Execute
+      - name: All WARMACHINE test passed ?
+        run: |
+          if [ ! cat warmachine/deepthought | grep KO ]; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
+        continue-on-error: true
+        shell: bash
+      - name: Tester TRIPOUILLE Mandatory
         run: |
           cd tripouille
-          make a
+          make a > deepthought
         shell: bash
-      - name: One WARMACHINE test passed at least ?
+      - name: Tester TRIPOUILLE Bonus
         run: |
-          cat warmachine/deepthought | grep OK
+          cd tripouille
+          make b > deepthought_bonus
+        shell: bash
+        continue-on-error: true
+      - name: All TRIPOUILLE test Mandatory passed ?
+        run: |
+          if [ ! cat tripouille/deepthought | grep KO ]; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
+        continue-on-error: true
+        shell: bash
+      - name: All TRIPOUILLE test Bonus passed ?
+        run: |
+          if [ ! cat tripouille/deepthought_bonus | grep KO ]; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
+        continue-on-error: true
+        shell: bash
