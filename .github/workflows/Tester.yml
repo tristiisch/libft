@@ -32,18 +32,27 @@ jobs:
         shell: bash
       - name: Tester WARMACHINE Deepthought
         run: cat warmachine/deepthought
-      - name: Tester TRIPOUILLE Init
+      - name: Tester TRIPOUILLE Mandatory
         run: |
           cd tripouille
-          sudo git checkout master
-          sudo git pull origin master
-      - name: Tester TRIPOUILLE Execute
+          tail -f deepthought & make a > deepthought
+        shell: bash
+      - name: Tester TRIPOUILLE Bonus
         run: |
-          cd tripouille 
-          sudo make a
-      - name: One WARMACHINE test passed at least ?
+          cd tripouille
+          tail -f deepthought_bonus & make b > deepthought_bonus
+        shell: bash
+        continue-on-error: true
+      - name: All TRIPOUILLE test Mandatory passed ?
         run: |
-          cat warmachine/deepthought | grep OK
+          ! (cat tripouille/deepthought | grep \\.MKO || cat tripouille/deepthought | grep \\.KO)
+        continue-on-error: true
+        shell: bash
+      - name: All TRIPOUILLE test Bonus passed ?
+        run: |
+          ! (cat tripouille/deepthought_bonus | grep \\.MKO || cat tripouille/deepthought_bonus | grep \\.KO)
+        continue-on-error: true
+        shell: bash
 
   testers_macos:
     runs-on: macos-latest
@@ -81,14 +90,9 @@ jobs:
         shell: bash
       - name: Tester WARMACHINE Deepthought
         run: cat warmachine/deepthought
-      # - name: Tester TRIPOUILLE Init
-      #   run: |
-      #     cd tripouille
-      #     git checkout master
-      #     git pull origin master
       - name: All WARMACHINE test passed ?
         run: |
-          if [[ ! cat warmachine/deepthought | grep KO ]] ; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
+          if ! cat warmachine/deepthought | grep KO; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
         continue-on-error: true
         shell: bash
       - name: Tester TRIPOUILLE Mandatory
@@ -104,11 +108,11 @@ jobs:
         continue-on-error: true
       - name: All TRIPOUILLE test Mandatory passed ?
         run: |
-          if [[ ! cat tripouille/deepthought | grep KO ]] ; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
+          ! (cat tripouille/deepthought | grep \\.MKO || cat tripouille/deepthought | grep \\.KO)
         continue-on-error: true
         shell: bash
       - name: All TRIPOUILLE test Bonus passed ?
         run: |
-          if [[ ! cat tripouille/deepthought | grep KO ]] ;  then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
+          ! (cat tripouille/deepthought_bonus | grep \\.MKO || cat tripouille/deepthought_bonus | grep \\.KO)
         continue-on-error: true
         shell: bash
