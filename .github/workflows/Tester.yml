@@ -88,27 +88,27 @@ jobs:
       #     git pull origin master
       - name: All WARMACHINE test passed ?
         run: |
-          if [ ! cat warmachine/deepthought | grep KO ]; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
+          if [[ ! cat warmachine/deepthought | grep KO ]] ; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
         continue-on-error: true
         shell: bash
       - name: Tester TRIPOUILLE Mandatory
         run: |
           cd tripouille
-          make a > deepthought
+          tail -f deepthought & make a > deepthought
         shell: bash
       - name: Tester TRIPOUILLE Bonus
         run: |
           cd tripouille
-          make b > deepthought_bonus
+          tail -f deepthought_bonus & make b > deepthought_bonus
         shell: bash
         continue-on-error: true
       - name: All TRIPOUILLE test Mandatory passed ?
         run: |
-          if [ ! cat tripouille/deepthought | grep KO ]; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
+          if [[ ! cat tripouille/deepthought | grep KO ]] ; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
         continue-on-error: true
         shell: bash
       - name: All TRIPOUILLE test Bonus passed ?
         run: |
-          if [ ! cat tripouille/deepthought_bonus | grep KO ]; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
+          if [[ ! cat tripouille/deepthought | grep KO ]] ;  then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
         continue-on-error: true
         shell: bash
