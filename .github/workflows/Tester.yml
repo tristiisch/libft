@@ -34,8 +34,7 @@ jobs:
         run: cat warmachine/deepthought
       - name: All WARMACHINE test passed ?
         run: |
-          if ! cat warmachine/deepthought | grep KO; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
-        continue-on-error: true
+          ! (cat warmachine/deepthought | grep KO)
         shell: bash
       - name: Tester TRIPOUILLE Mandatory
         run: |
@@ -97,8 +96,7 @@ jobs:
         run: cat warmachine/deepthought
       - name: All WARMACHINE test passed ?
         run: |
-          if ! cat warmachine/deepthought | grep KO; then echo ::set-output name=status::failure; else echo ::set-output name=status::success; fi
-        continue-on-error: true
+          ! (cat warmachine/deepthought | grep KO)
         shell: bash
       - name: Tester TRIPOUILLE Mandatory
         run: |
